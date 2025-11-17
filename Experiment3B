@@ -1,0 +1,53 @@
+
+import 'package:flutter/material.dart';
+void main() => runApp(const MyApp());
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Responsive Layout Example',
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Responsive layout with Breakpoints'),
+          centerTitle: true,
+        ),
+        body: const ResponsiveLayout(),
+      ),
+    );
+  }
+}
+
+class ResponsiveLayout extends StatelessWidget {
+  const ResponsiveLayout({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    if (screenWidth < 600) {
+      return const Center(
+        child: Text(
+          "Mobile Layout",
+          style: TextStyle(fontSize: 24, color: Colors.blue),
+        ),
+      );
+    }
+
+else if (screenWidth < 1200) {
+      return const Center(
+        child: Text(
+          "Tablet Layout",
+          style: TextStyle(fontSize: 28, color: Colors.green),
+        ),
+      );
+    } else {
+      return const Center(
+        child: Text(
+          "Desktop Layout",
+          style: TextStyle(fontSize: 32, color: Colors.red),
+        ),
+      );
+    }
+    }
