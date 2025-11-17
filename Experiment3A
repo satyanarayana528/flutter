@@ -1,0 +1,84 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Responsive Home',
+      home: const ResponsiveHome(),
+    );
+  }
+}
+
+class ResponsiveHome extends StatelessWidget {
+  const ResponsiveHome({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Responsive UI Example"),
+      ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          // Breakpoints
+          if (constraints.maxWidth < 600) {
+            return buildMobileLayout();
+          } else if (constraints.maxWidth < 1200) {
+            return buildTabletLayout();
+          } else {
+            return buildDesktopLayout();
+          }
+        },
+      ),
+    );
+  }
+
+  Widget buildMobileLayout() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        Icon(Icons.phone_android, size: 100, color: Colors.blue),
+        Text(
+          'Mobile Layout',
+          style: TextStyle(fontSize: 28),
+        ),
+      ],
+    );
+  }
+
+  Widget buildTabletLayout() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: const [
+        Icon(Icons.tablet, size: 100, color: Colors.green),
+        SizedBox(width: 20),
+        Text(
+          'Tablet Layout',
+          style: TextStyle(fontSize: 28),
+        ),
+      ],
+    );
+  }
+
+  Widget buildDesktopLayout() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: const [
+        Icon(Icons.desktop_windows, size: 100, color: Colors.orange),
+        Text(
+          'Desktop Layout',
+          style: TextStyle(fontSize: 32),
+        ),
+        Icon(Icons.desktop_mac, size: 100, color: Colors.purple),
+      ],
+    );
+  }
+}
