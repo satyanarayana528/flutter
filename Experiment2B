@@ -1,0 +1,129 @@
+Program:
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(LayoutDemoApp());
+}
+
+class LayoutDemoApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Row, Column, Stack Demo',
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Layouts in Flutter'),
+          backgroundColor: Colors.blueAccent,
+        ),
+        body: SingleChildScrollView(
+          // Allows scrolling if content overflows
+          padding: EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // ===== ROW EXAMPLE =====
+              Text(
+                "Row Example:",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    color: Colors.red,
+                  ),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    color: Colors.green,
+                  ),
+                  Container(
+                    width: 60,
+                    height: 60,
+                    color: Colors.blue,
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 30),
+
+              // ===== COLUMN EXAMPLE =====
+              Text(
+                "Column Example:",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 80,
+                    height: 60,
+                    color: Colors.orange,
+                  ),
+                  Container(
+                    width: 80,
+                    height: 60,
+                    color: Colors.purple,
+                  ),
+                  Container(
+                    width: 80,
+                    height: 60,
+                    color: Colors.teal,
+                  ),
+                ],
+              ),
+
+              SizedBox(height: 30),
+
+              // ===== STACK EXAMPLE =====
+              Text(
+                "Stack Example:",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Center(
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Container(
+                      width: 150,
+                      height: 150,
+                      color: Colors.grey,
+                    ),
+                    Container(
+                      width: 100,
+                      height: 100,
+                      color: Colors.yellow,
+                    ),
+                    Icon(
+                      Icons.star,
+                      size: 50,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
